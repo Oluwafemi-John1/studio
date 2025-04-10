@@ -19,6 +19,7 @@ const trendingNews = [
     title: 'Pope Francis Calls for Peace',
     content: 'Pope Francis has made a new call for peace in...',
     date: '2024-07-23',
+    imageUrl: 'https://picsum.photos/100/100', // Example image URL
   },
 ];
 
@@ -162,12 +163,19 @@ function TrendingNews({trendingNews}: {trendingNews: any[]}) {
         </CardTitle>
         <CardDescription>Top stories in the Catholic community</CardDescription>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-4 p-6">
         {trendingNews.map((item, index) => (
-          <div key={index} className="border-b pb-2 last:border-none">
-            <h3 className="text-md font-semibold">{item.title}</h3>
-            <p className="text-sm text-muted-foreground">{item.content}</p>
-            <Badge className="mt-2">{item.date}</Badge>
+          <div key={index} className="flex items-start border-b pb-4 last:border-none">
+            <img
+              src={item.imageUrl || placeholderImage}
+              alt={item.title}
+              className="mr-4 h-16 w-16 rounded-md object-cover"
+            />
+            <div>
+              <h3 className="text-md font-semibold">{item.title}</h3>
+              <p className="text-sm text-muted-foreground">{item.content}</p>
+              <Badge className="mt-2">{item.date}</Badge>
+            </div>
           </div>
         ))}
       </CardContent>
